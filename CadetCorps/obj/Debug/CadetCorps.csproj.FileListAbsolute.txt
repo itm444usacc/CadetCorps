@@ -21,3 +21,5 @@ D:\Projects\studentdev\CadetCorps\CadetCorps\obj\Debug\CadetCorps.pdb
 D:\Projects\studentdev\CadetCorps\CadetCorps\obj\Debug\CadetCorps.csprojResolveAssemblyReference.cache
 D:\Projects\studentdev\CadetCorps\CadetCorps\bin\MVCCentral.Framework.dll
 D:\Projects\studentdev\CadetCorps\CadetCorps\bin\SecurityGuard.dll
+D:\Projects\studentdev\CadetCorps\CadetCorps\bin\MySql.Data.dll
+D:\Projects\studentdev\CadetCorps\CadetCorps\bin\MySql.Web.dll

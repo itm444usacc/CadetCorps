@@ -43,6 +43,12 @@
     <Reference Include="MVCCentral.Framework">
       <HintPath>..\packages\SecurityGuard.1.0.54.586\lib\net40\MVCCentral.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.6.4\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web">
+      <HintPath>..\packages\MySql.Web.6.6.4\lib\net40\MySql.Web.dll</HintPath>
+    </Reference>
     <Reference Include="SecurityGuard">
       <HintPath>..\packages\SecurityGuard.1.0.54.586\lib\net40\SecurityGuard.dll</HintPath>
     </Reference>
@@ -217,6 +223,8 @@
     <Content Include="Areas\SecurityGuard\Views\Membership\GrantRolesToUser.cshtml" />
     <Content Include="Areas\SecurityGuard\Views\Membership\CreateUser.cshtml" />
     <Content Include="Areas\SecurityGuard\Views\Dashboard\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\testcat - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\testcat - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="MailerTemplates\ResetPassword.html" />
     <Content Include="Scripts\jquery-1.7.1.js" />
