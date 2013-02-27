@@ -11,11 +11,14 @@ namespace CadetCorps.ViewModels
         public int Admin { get; set; }
         public int Active { get; set; }
         public int AcceptedTerms { get; set; }
-        //public IEnumerable<ServiceInformation> Status { get; set; }
+        public List<TrainingPlans> TrainingPlan { get; set; }
+        public IEnumerable<ServiceInformation> Status { get; set; }
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
+        [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Nickname")]
@@ -27,7 +30,12 @@ namespace CadetCorps.ViewModels
         [Display(Name = "E-mail")]
         public string Email { get; set; }
         //public int Photo { get; set; }
-        //public DateTime Created { get; set; }
-        //public DateTime LastLogin { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime Expired { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime Created { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime LastLogin { get; set; }
         }
 }

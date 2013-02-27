@@ -50,3 +50,8 @@ D:\CadetCorps\CadetCorps\obj\Debug\CadetCorps.pdb
 D:\CadetCorps\CadetCorps\bin\Dapper.dll
 D:\CadetCorps\CadetCorps\bin\Dapper.pdb
 D:\CadetCorps\CadetCorps\bin\Dapper.xml
+D:\CadetCorps\CadetCorps\bin\StructureMap.dll
+D:\CadetCorps\CadetCorps\bin\WebActivator.dll
+D:\CadetCorps\CadetCorps\bin\StructureMap.pdb
+D:\CadetCorps\CadetCorps\bin\StructureMap.xml
+D:\CadetCorps\CadetCorps\obj\Debug\CadetCorps.csprojResolveAssemblyReference.cache

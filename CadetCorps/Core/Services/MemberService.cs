@@ -15,18 +15,23 @@ namespace CadetCorps.Core.Services
             using (var cmd = connection.CreateCommand())
             {
                 connection.Open();
-                var query = cmd.CommandText = "INSERT INTO Members( FirstName, MiddleName, LastName, NickName, Username, Comments, Email) VALUES ( @FirstName, @MiddleName, @LastName, @NickName, @Username, @Comments, @Email ";
+                var query = cmd.CommandText = "INSERT INTO cadtrak.Members( FirstName, MiddleName, LastName, NickName, Username, Comments, Email, Expired, Created, TrainingPlansId) VALUES ( @FirstName, @MiddleName, @LastName, @NickName, @Username, @Comments, @Email, @Expired, @Created, @TrainingPlan";
 
                 connection.Execute(query, new
                 {
                     viewModel.FirstName,
                     viewModel.MiddleName,
                     viewModel.LastName,
+                    viewModel.Nickname,
                     viewModel.Username,
                     viewModel.Comments,
                     viewModel.Email,
+                    viewModel.Expired,
+                    viewModel.Created,
+                    viewModel.TrainingPlan
                 });
             }
         }
     }
 }
+//INSERT INTO cadtrak.Members( FirstName, MiddleName, LastName, NickName, Username, Comments, Email, Expired, Created, TrainingPlansId) VALUES ( 'Gary', 'Michael', 'James', 'Havoc', 'jamesga1', 'meow', 'a@a.com', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1 )

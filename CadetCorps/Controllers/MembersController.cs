@@ -23,12 +23,12 @@ namespace CadetCorps.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            var viewModel = new CreateMemberViewModel();
 
-            return View("Create");
+            return View("Create", viewModel);
         }
 
         [HttpPost]
-        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult CreateUser(CreateMemberViewModel viewModel)
         {
             if (ModelState.IsValid)
