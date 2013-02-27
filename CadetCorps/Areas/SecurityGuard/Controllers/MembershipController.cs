@@ -2,7 +2,6 @@ using System;
 using System.Web.Mvc;
 using System.Web.Security;
 using CadetCorps.Areas.SecurityGuard.ViewModels;
-using CadetCorps.Areas.SecurityGuard.ViewModels;
 using routeHelpers = SecurityGuard.Core.RouteHelpers;
 using SecurityGuard.Core.Attributes;
 using CadetCorps.Controllers;

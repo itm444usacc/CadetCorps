@@ -45,6 +45,8 @@ D:\CadetCorps\CadetCorps\bin\System.Web.Razor.xml
 D:\CadetCorps\CadetCorps\bin\System.Web.WebPages.xml
 D:\CadetCorps\CadetCorps\bin\System.Web.WebPages.Deployment.xml
 D:\CadetCorps\CadetCorps\bin\System.Web.WebPages.Razor.xml
-D:\CadetCorps\CadetCorps\obj\Debug\CadetCorps.csprojResolveAssemblyReference.cache
 D:\CadetCorps\CadetCorps\obj\Debug\CadetCorps.dll
 D:\CadetCorps\CadetCorps\obj\Debug\CadetCorps.pdb
+D:\CadetCorps\CadetCorps\bin\Dapper.dll
+D:\CadetCorps\CadetCorps\bin\Dapper.pdb
+D:\CadetCorps\CadetCorps\bin\Dapper.xml

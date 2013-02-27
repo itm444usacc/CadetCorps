@@ -1,5 +1,75 @@
-﻿@{
+﻿@model CadetCorps.ViewModels.CreateMemberViewModel
+@{
     ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
+<fieldset>
+    @Html.ValidationSummary(true)
+
+    @using (Html.BeginForm("Create", "Members", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Admin)
+        @Html.HiddenFor(m => m.Active)
+        @Html.HiddenFor(m => m.AcceptedTerms)
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.FirstName)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.FirstName)</div>
+                <span>@Html.ValidationMessageFor(m => m.FirstName)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.MiddleName)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.MiddleName)</div>
+                <span>@Html.ValidationMessageFor(m => m.MiddleName)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.LastName)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.LastName)</div>
+                <span>@Html.ValidationMessageFor(m => m.LastName)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.Nickname)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.Nickname)</div>
+                <span>@Html.ValidationMessageFor(m => m.Nickname)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.Username)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.Username)</div>
+                <span>@Html.ValidationMessageFor(m => m.Username)</span>
+            </div>
+        </div>
+        <div>
+            <div>@Html.LabelFor(m => m.Comments)</div>
+        </div>
+        <div>
+            <div>@Html.EditorFor(m => m.Comments)</div>
+            <span>@Html.ValidationMessageFor(m => m.Comments)</span>
+        </div>
+        <div>
+            <div>@Html.LabelFor(m => m.Email)</div>
+        </div>
+        <div>
+            <div>@Html.EditorFor(m => m.Email)</div>
+            <span>@Html.ValidationMessageFor(m => m.Email)</span>
+        </div>
+    }
+</fieldset>

@@ -1,9 +1,17 @@
 ﻿using System.Web.Mvc;
+using CadetCorps.Core.Interfaces;
+using CadetCorps.ViewModels;
 
 namespace CadetCorps.Controllers
 {
     public class MembersController : Controller
     {
+        private readonly IMemberService _memberService;
+
+        public MembersController(IMemberService memberService)
+        {
+            _memberService = memberService;
+        }
 
         public ActionResult Index()
         {
@@ -12,10 +20,25 @@ namespace CadetCorps.Controllers
             return View("Index");
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
 
             return View("Create");
+        }
+
+        [HttpPost]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult CreateUser(CreateMemberViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _memberService.CreateUser(viewModel);
+
+                return RedirectToAction("Index");
+            }
+
+            return View("Create", viewModel);
         }
 
         public ActionResult Edit()
