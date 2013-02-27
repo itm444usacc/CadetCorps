@@ -2,13 +2,13 @@ using System;
 using System.Web.Mvc;
 using System.Web.Security;
 using CadetCorps.Areas.SecurityGuard.ViewModels;
-using SecurityGuard.Core.Extensions;
-using SecurityGuard.Services;
-using SecurityGuard.Core.Attributes;
+using CadetCorps.Areas.SecurityGuard.ViewModels;
 using routeHelpers = SecurityGuard.Core.RouteHelpers;
-using SecurityGuard.Interfaces;
-using SecurityGuard.ViewModels;
+using SecurityGuard.Core.Attributes;
 using CadetCorps.Controllers;
+using SecurityGuard.Core.Extensions;
+using SecurityGuard.Interfaces;
+using SecurityGuard.Services;
 
 namespace CadetCorps.Areas.SecurityGuard.Controllers
 {

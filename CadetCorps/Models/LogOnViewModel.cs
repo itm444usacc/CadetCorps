@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SecurityGuard.ViewModels
+namespace CadetCorps.Models
 {
     public partial class LogOnViewModel
     {

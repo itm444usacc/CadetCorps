@@ -2,13 +2,13 @@ using System;
 using System.IO;
 using System.Web.Mvc;
 using System.Web.Security;
-using CadetCorps.Areas.SecurityGuard.Models;
 using CadetCorps.Areas.SecurityGuard.ViewModels;
+using CadetCorps.Models;
 using MVCCentral.Framework;
+using CadetCorps.Areas;
 using SecurityGuard.Core;
 using SecurityGuard.Interfaces;
 using SecurityGuard.Services;
-using SecurityGuard.ViewModels;
 
 namespace CadetCorps.Controllers
 {

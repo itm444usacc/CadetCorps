@@ -1,4 +1,4 @@
-﻿namespace SecurityGuard.ViewModels
+﻿namespace CadetCorps.Areas.SecurityGuard.ViewModels
 {
     public class SelectObject
     {

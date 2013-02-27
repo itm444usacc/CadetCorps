@@ -1,6 +1,6 @@
 ﻿using System.Web.Security;
 
-namespace SecurityGuard.ViewModels
+namespace CadetCorps.Areas.SecurityGuard.ViewModels
 {
     public class UserViewModel
     {

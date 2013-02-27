@@ -1,7 +1,7 @@
 ﻿using System.Web.Security;
 using SecurityGuard.Core.Pagination;
 
-namespace SecurityGuard.ViewModels
+namespace CadetCorps.Areas.SecurityGuard.ViewModels
 {
     public class ManageUsersViewModel
     {

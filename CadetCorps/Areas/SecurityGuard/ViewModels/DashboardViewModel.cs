@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SecurityGuard.ViewModels
+﻿namespace CadetCorps.Areas.SecurityGuard.ViewModels
 {
     public class DashboardViewModel
     {

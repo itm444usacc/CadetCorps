@@ -1,9 +1,10 @@
 using System.Web.Mvc;
 using System.Web.Security;
-using SecurityGuard.Services;
-using SecurityGuard.Interfaces;
-using SecurityGuard.ViewModels;
+using CadetCorps.Areas.SecurityGuard.ViewModels;
+using CadetCorps.Areas;
 using CadetCorps.Controllers;
+using SecurityGuard.Interfaces;
+using SecurityGuard.Services;
 
 namespace CadetCorps.Areas.SecurityGuard.Controllers
 {

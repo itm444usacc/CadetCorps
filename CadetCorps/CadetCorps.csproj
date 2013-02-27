@@ -110,28 +110,53 @@
     <Compile Include="Areas\SecurityGuard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\SecurityGuard\Controllers\MembershipController.cs" />
     <Compile Include="Areas\SecurityGuard\Controllers\RoleController.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\ChangePasswordViewModel.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\DashboardViewModel.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\ForgotPasswordViewModel.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\GrantRolesToUserViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\DashboardViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\GrantRolesToUserViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\Models\JsonResponse.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\ManageRolesViewModel.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\ManageUsersViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\ManageRolesViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\ManageUsersViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\Models\ResponseItem.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\RoleViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\RoleViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\Models\SelectObject.cs" />
-    <Compile Include="Areas\SecurityGuard\Models\UserViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\UserViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\SecurityGuardAreaRegistration.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\RegisterViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\AssignmentsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EvaluationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\SGAccountController.cs" />
+    <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Activities.cs" />
+    <Compile Include="Models\ActivitiesUnits.cs" />
+    <Compile Include="Models\Awards.cs" />
+    <Compile Include="Models\AwardsTypes.cs" />
+    <Compile Include="Models\Contacts.cs" />
+    <Compile Include="Models\Evaluations.cs" />
     <Compile Include="Models\LogOnViewModel.cs" />
+    <Compile Include="Models\Members.cs" />
+    <Compile Include="Models\MembersActivities.cs" />
+    <Compile Include="Models\ServiceInformation.cs" />
+    <Compile Include="Models\ServiceInformationGrades.cs" />
+    <Compile Include="Models\ServiceInformationGradesTypes.cs" />
+    <Compile Include="Models\TrainingPlans.cs" />
+    <Compile Include="Models\TrainingProgramActivitiesGrades.cs" />
+    <Compile Include="Models\TrainingPrograms.cs" />
+    <Compile Include="Models\TrainingProgramsActivities.cs" />
+    <Compile Include="Models\TrainingProgramsCourses.cs" />
+    <Compile Include="Models\TrainingProgramsCoursesGrades.cs" />
+    <Compile Include="Models\TrainingProgramsCoursesGradesTypes.cs" />
+    <Compile Include="Models\TrainingProgramsFormats.cs" />
+    <Compile Include="Models\TrainingProgramsTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +295,21 @@
     <Content Include="Views\SGAccount\ForgotPassword.cshtml" />
     <Content Include="Views\SGAccount\ChangePasswordSuccess.cshtml" />
     <Content Include="Views\SGAccount\ChangePassword.cshtml" />
+    <Content Include="Views\Activities\Create.cshtml" />
+    <Content Include="Views\Activities\Edit.cshtml" />
+    <Content Include="Views\Activities\Index.cshtml" />
+    <Content Include="Views\Assignments\Create.cshtml" />
+    <Content Include="Views\Assignments\Edit.cshtml" />
+    <Content Include="Views\Assignments\Index.cshtml" />
+    <Content Include="Views\Evaluations\Create.cshtml" />
+    <Content Include="Views\Evaluations\Edit.cshtml" />
+    <Content Include="Views\Evaluations\Index.cshtml" />
+    <Content Include="Views\Members\Create.cshtml" />
+    <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\Training\Create.cshtml" />
+    <Content Include="Views\Training\Edit.cshtml" />
+    <Content Include="Views\Training\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

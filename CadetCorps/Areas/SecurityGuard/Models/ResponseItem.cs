@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace SecurityGuard.ViewModels
+namespace CadetCorps.Areas.SecurityGuard.ViewModels
 {
     public class ResponseItem
     {

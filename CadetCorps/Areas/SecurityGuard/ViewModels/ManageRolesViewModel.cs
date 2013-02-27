@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace SecurityGuard.ViewModels
+namespace CadetCorps.Areas.SecurityGuard.ViewModels
 {
     public class ManageRolesViewModel
     {

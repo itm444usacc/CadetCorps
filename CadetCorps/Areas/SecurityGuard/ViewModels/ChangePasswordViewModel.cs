@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CadetCorps.Areas.SecurityGuard.Models
+namespace CadetCorps.Areas.SecurityGuard.ViewModels
 {
     public class ChangePasswordViewModel
     {
