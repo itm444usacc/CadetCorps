@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model CadetCorps.ViewModels.ListMembersViewModel
+
+@{
+    ViewBag.Title = "Members";
 }
 
     <section class="featured">
@@ -9,11 +11,34 @@
                 <h2>@ViewBag.Message</h2>
             </hgroup>
             <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+                @Html.ActionLink("Edit", "Edit", "Members")
+                @Html.ActionLink("Create", "Create", "Members")
             </p>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Member Details</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Members)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink("Select", "Edit", "Members", new {item.Id})</td>
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.Username</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </section>

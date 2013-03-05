@@ -55,3 +55,6 @@ D:\CadetCorps\CadetCorps\bin\WebActivator.dll
 D:\CadetCorps\CadetCorps\bin\StructureMap.pdb
 D:\CadetCorps\CadetCorps\bin\StructureMap.xml
 D:\CadetCorps\CadetCorps\obj\Debug\CadetCorps.csprojResolveAssemblyReference.cache
+D:\CadetCorps\CadetCorps\bin\Antlr3.Runtime.dll
+D:\CadetCorps\CadetCorps\bin\System.Web.Optimization.dll
+D:\CadetCorps\CadetCorps\bin\WebGrease.dll

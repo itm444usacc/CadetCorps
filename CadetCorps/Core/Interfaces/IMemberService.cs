@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using CadetCorps.ViewModels;
+﻿using CadetCorps.ViewModels;
 
 namespace CadetCorps.Core.Interfaces
 {
     public interface IMemberService
     {
+
+        ListMembersViewModel GetMembersList();
+
+        EditMemberViewModel Read(int id);
+
         void CreateUser(CreateMemberViewModel viewModel);
+
+        void Edit(EditMemberViewModel viewModel);
     }
 }

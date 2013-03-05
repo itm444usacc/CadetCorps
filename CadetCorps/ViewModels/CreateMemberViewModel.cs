@@ -11,8 +11,8 @@ namespace CadetCorps.ViewModels
         public int Admin { get; set; }
         public int Active { get; set; }
         public int AcceptedTerms { get; set; }
-        public List<TrainingPlans> TrainingPlan { get; set; }
-        public IEnumerable<ServiceInformation> Status { get; set; }
+        public int TrainingPlansId { get; set; }
+        public List<ServiceInformation> Status { get; set; }
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

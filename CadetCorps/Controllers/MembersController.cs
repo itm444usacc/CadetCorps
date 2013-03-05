@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using CadetCorps.Core.Interfaces;
 using CadetCorps.ViewModels;
+using SecurityGuard.Services;
 
 namespace CadetCorps.Controllers
 {
@@ -15,9 +16,9 @@ namespace CadetCorps.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "Members Contoller.";
+            var list = _memberService.GetMembersList();
 
-            return View("Index");
+            return View("Index", list);
         }
 
         [HttpGet]
@@ -41,10 +42,17 @@ namespace CadetCorps.Controllers
             return View("Create", viewModel);
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
+        {
+            var viewModel = _memberService.Read(id);
+
+            return View("Edit", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(EditMemberViewModel viewModel)
         {
             return View("Edit");
         }
-
     }
 }
