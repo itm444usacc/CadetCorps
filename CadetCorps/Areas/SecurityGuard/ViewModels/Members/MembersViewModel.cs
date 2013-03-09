@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using SecurityGuard.Services;
 
-namespace CadetCorps.ViewModels
+namespace CadetCorps.Areas.SecurityGuard.ViewModels.Members
 {
 
     public class ListMembersViewModel

@@ -1,4 +1,4 @@
-﻿using CadetCorps.ViewModels;
+﻿using CadetCorps.Areas.SecurityGuard.ViewModels.Members;
 
 namespace CadetCorps.Core.Interfaces
 {
@@ -9,8 +9,10 @@ namespace CadetCorps.Core.Interfaces
 
         EditMemberViewModel Read(int id);
 
+        CreateMemberViewModel GetRanks();
+
         void CreateUser(CreateMemberViewModel viewModel);
 
-        void Edit(EditMemberViewModel viewModel);
+        void EditUser(EditMemberViewModel viewModel);
     }
 }

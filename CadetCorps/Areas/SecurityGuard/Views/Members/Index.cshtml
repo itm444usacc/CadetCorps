@@ -1,7 +1,7 @@
-﻿@model CadetCorps.ViewModels.ListMembersViewModel
-
+﻿@model CadetCorps.Areas.SecurityGuard.ViewModels.Members.ListMembersViewModel
 @{
     ViewBag.Title = "Members";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
     <section class="featured">
@@ -10,10 +10,6 @@
                 <h1>@ViewBag.Title.</h1>
                 <h2>@ViewBag.Message</h2>
             </hgroup>
-            <p>
-                @Html.ActionLink("Edit", "Edit", "Members")
-                @Html.ActionLink("Create", "Create", "Members")
-            </p>
         </div>
         <div>
             <table>
@@ -33,7 +29,7 @@
                     @foreach (var item in Model.Members)
                     {
                         <tr>
-                            <td>@Html.ActionLink("Select", "Edit", "Members", new {item.Id})</td>
+                            <td>@Html.ActionLink("Select", "Edit", "Members", new  {area = "SecurityGuard", id = item.Id}, null)</td>
                             <td>@item.FirstName @item.LastName</td>
                             <td>@item.Username</td>
                         </tr>

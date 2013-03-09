@@ -1,16 +1,20 @@
-﻿@model CadetCorps.ViewModels.EditMemberViewModel
+﻿@model CadetCorps.Areas.SecurityGuard.ViewModels.Members.EditMemberViewModel
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2>Edit @Model.FirstName @Model.LastName</h2>
 <fieldset>
-    @using (Html.BeginForm("CreateUser", "Members", FormMethod.Post))
+    @using (Html.BeginForm("EditUser", "Members", FormMethod.Post))
     {
         @Html.ValidationSummary(true)
+        @Html.HiddenFor(m => m.Id)
         @Html.HiddenFor(m => m.Admin)
         @Html.HiddenFor(m => m.Active)
         @Html.HiddenFor(m => m.AcceptedTerms)
+        @Html.HiddenFor(m => m.TrainingPlansId)
         <div>
             <div>
                 <div>@Html.LabelFor(m => m.FirstName)</div>
@@ -85,6 +89,6 @@
             <span>@Html.ValidationMessageFor(m => m.TrainingPlansId)</span>
         </div>
         
-        <input type="submit" value="Create" name="CreateUser" />
+        <input type="submit" value="Edit" name="EditUser" />
     }
 </fieldset>

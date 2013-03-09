@@ -1,9 +1,8 @@
 ﻿using System.Web.Mvc;
+using CadetCorps.Areas.SecurityGuard.ViewModels.Members;
 using CadetCorps.Core.Interfaces;
-using CadetCorps.ViewModels;
-using SecurityGuard.Services;
 
-namespace CadetCorps.Controllers
+namespace CadetCorps.Areas.SecurityGuard.Controllers
 {
     public class MembersController : Controller
     {
@@ -24,7 +23,7 @@ namespace CadetCorps.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var viewModel = new CreateMemberViewModel();
+            var viewModel = _memberService.GetRanks();
 
             return View("Create", viewModel);
         }
@@ -52,6 +51,13 @@ namespace CadetCorps.Controllers
         [HttpPost]
         public ActionResult EditUser(EditMemberViewModel viewModel)
         {
+            if (ModelState.IsValid)
+            {
+                _memberService.EditUser(viewModel);
+
+                return RedirectToAction("Index");
+            }
+
             return View("Edit");
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using CadetCorps.Models;
 
-namespace CadetCorps.ViewModels
+namespace CadetCorps.Areas.SecurityGuard.ViewModels.Members
 {
     public class EditMemberViewModel
     {
