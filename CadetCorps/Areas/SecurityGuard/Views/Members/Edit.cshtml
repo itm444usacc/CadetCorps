@@ -6,6 +6,8 @@
 
 
 <h2>Edit @Model.FirstName @Model.LastName</h2>
+
+<div>@Html.ActionLink("New Contact", "Create", "Contacts", new { area = "SecurityGuard", Model.Id}, null)</div>
 <fieldset>
     @using (Html.BeginForm("EditUser", "Members", FormMethod.Post))
     {

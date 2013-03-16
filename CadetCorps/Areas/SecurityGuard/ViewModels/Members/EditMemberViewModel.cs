@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using CadetCorps.Areas.SecurityGuard.ViewModels.Contacts;
 using CadetCorps.Models;
 
 namespace CadetCorps.Areas.SecurityGuard.ViewModels.Members

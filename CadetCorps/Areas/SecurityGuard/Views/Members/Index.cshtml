@@ -29,7 +29,7 @@
                     @foreach (var item in Model.Members)
                     {
                         <tr>
-                            <td>@Html.ActionLink("Select", "Edit", "Members", new  {area = "SecurityGuard", id = item.Id}, null)</td>
+                            <td>@Html.ActionLink("Select", "Details", "Members", new  {area = "SecurityGuard", id = item.Id}, null)</td>
                             <td>@item.FirstName @item.LastName</td>
                             <td>@item.Username</td>
                         </tr>

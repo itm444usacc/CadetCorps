@@ -43,6 +43,27 @@ namespace CadetCorps.Core.Services
             return result;
         }
 
+        public MemberDetailsViewModel ReadUser(int id)
+        {
+            MemberDetailsViewModel result;
+
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (var cmd = connection.CreateCommand())
+            {
+                connection.Open();
+                var memberQuery = cmd.CommandText = @"SELECT Id, FirstName, MiddleName, LastName, NickName, Username, Comments, Email, Expired, Created, TrainingPlansId FROM Members WHERE Id = @id";
+
+                var contactQuery = cmd.CommandText = @"SELECT * FROM cadtrak.contacts WHERE MembersId = @id";
+
+                result = connection.Query<MemberDetailsViewModel>(memberQuery, new { id }).FirstOrDefault();
+
+                if (result != null)
+                    result.Contacts = connection.Query<ContactsViewModel>(contactQuery, new { id }).ToList();
+            }
+
+             return result;
+        }
+
         public CreateMemberViewModel GetRanks()
         {
             var viewModel = new CreateMemberViewModel();
@@ -71,12 +92,15 @@ namespace CadetCorps.Core.Services
                 viewModel.Created = DateTime.Now;
                 viewModel.Expired = DateTime.Now.AddYears(1);
                 connection.Open();
-                var query = cmd.CommandText = "INSERT INTO cadtrak.Members( FirstName, MiddleName, LastName, NickName, Username, Comments, Email, Expired, Created, Admin, TrainingPlansId) VALUES ( @FirstName, @MiddleName, @LastName, @NickName, @Username, @Comments, @Email, @Expired, @Created, @Admin, @TrainingPlansId)";
+
+                var query = cmd.CommandText = @"INSERT INTO cadtrak.Members( FirstName, MiddleName, LastName, SocialSecurity, NickName, Username, Comments, Email, Expired, Created, Admin, TrainingPlansId) 
+                                    VALUES ( @FirstName, @MiddleName, @LastName, @SocialSecurity, @NickName, @Username, @Comments, @Email, @Expired, @Created, @Admin, @TrainingPlansId)";
                 connection.Execute(query, new
                 {
                     viewModel.FirstName,
                     viewModel.MiddleName,
                     viewModel.LastName,
+                    viewModel.SocialSecurity,
                     viewModel.Nickname,
                     viewModel.Username,
                     viewModel.Comments,

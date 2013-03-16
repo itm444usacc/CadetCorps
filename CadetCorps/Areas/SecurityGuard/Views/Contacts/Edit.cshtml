@@ -1,0 +1,99 @@
+﻿@model CadetCorps.Areas.SecurityGuard.ViewModels.Contacts.EditCreateViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Contact</h2>
+
+<fieldset>
+    @using (Html.BeginForm("Edit", "Contacts", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(m => m.MembersId)
+
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.FirstName)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.FirstName)</div>
+                <span>@Html.ValidationMessageFor(m => m.FirstName)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.LastName)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.LastName)</div>
+                <span>@Html.ValidationMessageFor(m => m.LastName)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.Email)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.Email)</div>
+                <span>@Html.ValidationMessageFor(m => m.Email)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.PhoneNumber)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.PhoneNumber)</div>
+                <span>@Html.ValidationMessageFor(m => m.PhoneNumber)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.Address)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.Address)</div>
+                <span>@Html.ValidationMessageFor(m => m.Address)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.City)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.City)</div>
+                <span>@Html.ValidationMessageFor(m => m.City)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.State)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.State)</div>
+                <span>@Html.ValidationMessageFor(m => m.State)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.Zip)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.Zip)</div>
+                <span>@Html.ValidationMessageFor(m => m.Zip)</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>@Html.LabelFor(m => m.Relationship)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.Relationship)</div>
+                <span>@Html.ValidationMessageFor(m => m.Relationship)</span>
+            </div>
+        </div>
+        
+        <input type="submit" value="Edit" name="Edit" />
+    }
+</fieldset>

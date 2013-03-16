@@ -41,6 +41,14 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
             return View("Create", viewModel);
         }
 
+        public ActionResult Details(int id)
+        {
+            var viewModel = _memberService.ReadUser(id);
+            
+
+            return View("Details", viewModel);
+        }
+
         public ActionResult Edit(int id)
         {
             var viewModel = _memberService.Read(id);

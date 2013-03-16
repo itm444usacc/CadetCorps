@@ -129,10 +129,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Areas\SecurityGuard\Controllers\ContactsController.cs" />
     <Compile Include="Areas\SecurityGuard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\SecurityGuard\Controllers\MembershipController.cs" />
     <Compile Include="Areas\SecurityGuard\Controllers\RoleController.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\Contacts\CreateContactsViewModel.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\Contacts\EditCreateViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\DashboardViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\GrantRolesToUserViewModel.cs" />
@@ -140,6 +143,7 @@
     <Compile Include="Areas\SecurityGuard\ViewModels\ManageRolesViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\ManageUsersViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\Models\ResponseItem.cs" />
+    <Compile Include="Areas\SecurityGuard\ViewModels\Members\MemberDetailsViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\RoleViewModel.cs" />
     <Compile Include="Areas\SecurityGuard\Models\SelectObject.cs" />
     <Compile Include="Areas\SecurityGuard\ViewModels\UserViewModel.cs" />
@@ -154,10 +158,14 @@
     <Compile Include="Areas\SecurityGuard\Controllers\MembersController.cs" />
     <Compile Include="Controllers\SGAccountController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
+    <Compile Include="Core\Interfaces\IContactsService.cs" />
     <Compile Include="Core\Interfaces\IMemberService.cs" />
+    <Compile Include="Core\Interfaces\IServiceInformationService.cs" />
+    <Compile Include="Core\Services\ContactsService.cs" />
     <Compile Include="Core\Services\MemberService.cs" />
     <Compile Include="Core\Init\DependencyResolution\IoC.cs" />
     <Compile Include="Core\Init\DependencyResolution\SmDependencyResolver.cs" />
+    <Compile Include="Core\Services\ServiceInformationService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -306,6 +314,7 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\usarmycadetcorps.jpg" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\jquery.ui.accordion.css" />
     <Content Include="Content\themes\base\jquery.ui.all.css" />
@@ -361,6 +370,10 @@
     <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\file_types.psd" />
     <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\copy document.psd" />
     <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\collection.psd" />
+    <Content Include="Areas\SecurityGuard\Views\Contacts\Create.cshtml" />
+    <Content Include="Areas\SecurityGuard\Views\Contacts\Index.cshtml" />
+    <Content Include="Areas\SecurityGuard\Views\Members\Details.cshtml" />
+    <Content Include="Areas\SecurityGuard\Views\Contacts\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\testcat - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\testcat - Web Deploy.pubxml" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\doc.js" />

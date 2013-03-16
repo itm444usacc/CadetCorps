@@ -9,6 +9,8 @@ namespace CadetCorps.Core.Interfaces
 
         EditMemberViewModel Read(int id);
 
+        MemberDetailsViewModel ReadUser(int id);
+
         CreateMemberViewModel GetRanks();
 
         void CreateUser(CreateMemberViewModel viewModel);

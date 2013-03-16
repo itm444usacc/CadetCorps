@@ -2,7 +2,6 @@
 
 namespace CadetCorps.Areas.SecurityGuard.ViewModels.Members
 {
-
     public class ListMembersViewModel
     {
         public List<MembersViewModel> Members { get; set; }

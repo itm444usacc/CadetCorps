@@ -1,0 +1,129 @@
+﻿@model CadetCorps.Areas.SecurityGuard.ViewModels.Members.MemberDetailsViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Edit @Model.FirstName @Model.LastName</h2>
+
+<div>@Html.ActionLink("New Contact", "Create", "Contacts", new { area = "SecurityGuard", Model.Id }, null)</div>
+
+@Html.ValidationSummary(true)
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.Admin)
+@Html.HiddenFor(m => m.Active)
+@Html.HiddenFor(m => m.AcceptedTerms)
+@Html.HiddenFor(m => m.TrainingPlansId)
+
+<div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.FirstName)</div>
+        </div>
+        <div>
+            <div>@Model.FirstName</div>
+        </div>
+        <br />
+    </div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.MiddleName)</div>
+        </div>
+        <div>
+            <div>@Model.MiddleName</div>
+        </div>
+        <br />
+    </div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.LastName)</div>
+        </div>
+        <div>
+            <div>@Model.LastName</div>
+        </div>
+        <br />
+    </div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.Nickname)</div>
+        </div>
+        <div>
+            <div>@Model.Nickname</div>
+        </div>
+        <br />
+    </div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.Username)</div>
+        </div>
+        <div>
+            <div>@Model.Username</div>
+        </div>
+        <br />
+    </div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.Comments)</div>
+        </div>
+        <div>
+            <div>@Model.Comments</div>
+        </div>
+        <br />
+    </div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.Email)</div>
+        </div>
+        <div>
+            <div>@Model.Email</div>
+        </div>
+        <br />
+    </div>
+    <div>
+        <div>
+            <div>@Html.LabelFor(m => m.Active)</div>
+        </div>
+        <div>
+            <div>@Model.Active</div>
+        </div>
+        <br />
+    </div>
+        <div>
+        <div>
+            <div>@Html.LabelFor(m => m.Email)</div>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Contact Details</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>E-Mail Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Contacts)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink("Select", "Edit", "Contacts", new  {area = "SecurityGuard", id = item.Id}, null)</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.Email</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+    </div>
+</div>
+

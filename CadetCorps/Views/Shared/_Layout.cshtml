@@ -10,18 +10,18 @@
         <div class="page">
             <div id="header">
                 <div id="title">
-                    <h1>My MVC Application</h1>
+                    <h1>USA Army Cadet Corps</h1>
                 </div>
                 <div id="logindisplay">
                     @Html.Partial("_LogOnPartial")
                 </div>
                 <div id="menucontainer">
                     <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = ""}, null)</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { area = ""}, null)</li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li>@Html.ActionLink("Change Password", "ChangePassword", "SGAccount")</li>
+                            <li>@Html.ActionLink("Change Password", "ChangePassword", "SGAccount", new { area = ""}, null)</li>
                         }
                         @if (User.IsInRole("SecurityGuard"))
                         {

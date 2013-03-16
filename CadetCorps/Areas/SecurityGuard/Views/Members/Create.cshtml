@@ -14,7 +14,7 @@
         
 
         @*Not passing RankId properly.  Need to look into - GJ *@
-        @*<div>
+        <div>
             <div>
                 <div>@Html.LabelFor(m => m.Rank)</div>
             </div>
@@ -22,7 +22,7 @@
                 <div>@Html.DropDownListFor(x => x.RankId, new SelectList(Model.Rank, "Value", "Text"))</div>
                 <span>@Html.ValidationMessageFor(m => m.Rank)</span>
             </div>
-        </div>*@
+        </div>
         <div>
             <div>
                 <div>@Html.LabelFor(m => m.FirstName)</div>
@@ -48,6 +48,15 @@
             <div>
                 <div>@Html.EditorFor(m => m.LastName)</div>
                 <span>@Html.ValidationMessageFor(m => m.LastName)</span>
+            </div>
+        </div>
+                <div>
+            <div>
+                <div>@Html.LabelFor(m => m.SocialSecurity)</div>
+            </div>
+            <div>
+                <div>@Html.EditorFor(m => m.SocialSecurity)</div>
+                <span>@Html.ValidationMessageFor(m => m.SocialSecurity)</span>
             </div>
         </div>
         <div>
