@@ -11,10 +11,14 @@ namespace CadetCorps.Core.Services
 {
     public class MemberService : IMemberService
     {
+        /*  ---All Members queries and Posts are within the Members service.  each action is a 1 to 1 match with the Members Interface class file---  */
+
+        /*  ---Gets all members and returns via MembersViewModel---  */
         public ListMembersViewModel GetMembersList()
         {
             var viewModel = new ListMembersViewModel();
 
+            /*  ---Opens MySQL query.  Auto closes connection within using statement---  */
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (var cmd = connection.CreateCommand())
             {
@@ -28,6 +32,7 @@ namespace CadetCorps.Core.Services
             return viewModel;
         }
 
+        /*  ---Gets a member via their MemberId and returns via EditMemberViewModel (For Editing)---  */
         public EditMemberViewModel Read(int id)
         {
             EditMemberViewModel result;
@@ -38,11 +43,13 @@ namespace CadetCorps.Core.Services
                 connection.Open();
                 var query = cmd.CommandText = @"SELECT Id, FirstName, MiddleName, LastName, NickName, Username, Comments, Email, Expired, Created, TrainingPlansId FROM Members WHERE Id = @id";
 
+                /*  ---Populates viewModel to return to controller---  */
                 result = connection.Query<EditMemberViewModel>(query, new { id }).FirstOrDefault();
             }
             return result;
         }
 
+        /*  ---Gets a member via their MemberId and returns via MemberDetailsViewModel with a list of Emergancy contacts.  ***NEEDS FINISHED***-Gary ---  */
         public MemberDetailsViewModel ReadUser(int id)
         {
             MemberDetailsViewModel result;
@@ -57,6 +64,7 @@ namespace CadetCorps.Core.Services
 
                 result = connection.Query<MemberDetailsViewModel>(memberQuery, new { id }).FirstOrDefault();
 
+                /*  ---Populates a list of contacts for Member to return to controller---  */
                 if (result != null)
                     result.Contacts = connection.Query<ContactsViewModel>(contactQuery, new { id }).ToList();
             }
@@ -64,6 +72,7 @@ namespace CadetCorps.Core.Services
              return result;
         }
 
+        /*  ---Gets all ranks and returns via MemberDetailsViewModel---  */
         public CreateMemberViewModel GetRanks()
         {
             var viewModel = new CreateMemberViewModel();
@@ -76,6 +85,7 @@ namespace CadetCorps.Core.Services
 
                 var con = connection.Query(query).ToList();
 
+                /*  ---Populates a list of ranks for Member to return to controller---  */
                 var ranks = con.Select(item => new SelectListItem { Text = item.Nomen, Value = item.RankId.ToString() }).ToList();
 
                 viewModel.Rank = ranks;
@@ -84,6 +94,7 @@ namespace CadetCorps.Core.Services
             return viewModel;
         }
 
+        /*  ---Creates a new Member and returns void.  Still needs to create flag to expire user after 1 year---  */
         public void CreateUser(CreateMemberViewModel viewModel)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -113,6 +124,7 @@ namespace CadetCorps.Core.Services
             }
         }
 
+        /*  ---Edits/Posts a Member and returns void---  */
         public void EditUser(EditMemberViewModel viewModel)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
