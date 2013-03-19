@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Security;
-using CadetCorps.Areas;
 using CadetCorps.Areas.SecurityGuard.ViewModels;
 using CadetCorps.Controllers;
 using SecurityGuard.Interfaces;
@@ -12,25 +11,25 @@ using SecurityGuard.Services;
 namespace CadetCorps.Areas.SecurityGuard.Controllers
 {
     [Authorize(Roles="SecurityGuard")]
-    public partial class RoleController : BaseController
+    public class RoleController : BaseController
     {
 
         #region ctors
 
-        private readonly IRoleService roleService;
+        private readonly IRoleService _roleService;
 
         public RoleController()
         {
-            this.roleService = new RoleService(Roles.Provider);
+            _roleService = new RoleService(Roles.Provider);
         }
 
         #endregion
 
         public virtual ActionResult Index()
         {
-            ManageRolesViewModel model = new ManageRolesViewModel();
-            model.Roles = new SelectList(roleService.GetAllRoles());
-            model.RoleList = roleService.GetAllRoles();
+            var model = new ManageRolesViewModel();
+            model.Roles = new SelectList(_roleService.GetAllRoles());
+            model.RoleList = _roleService.GetAllRoles();
 
             return View(model);
         }
@@ -59,7 +58,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
 
             try
             {
-                roleService.CreateRole(roleName);
+                _roleService.CreateRole(roleName);
 
                 if (Request.IsAjaxRequest())
                 {
@@ -112,7 +111,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
                 return Json(response);
             }
 
-            roleService.DeleteRole(roleName);
+            _roleService.DeleteRole(roleName);
 
             response.Success = true;
             response.Message = roleName + " was deleted successfully!";
@@ -145,7 +144,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
                 {
                     try
                     {
-                        roleService.DeleteRole(role, throwOnPopulatedRole);
+                        _roleService.DeleteRole(role, throwOnPopulatedRole);
 
                         item = new ResponseItem();
                         item.Success = true;
@@ -185,7 +184,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         /// <returns></returns>
         public ActionResult GetAllRoles()
         {
-            var list = roleService.GetAllRoles();
+            var list = _roleService.GetAllRoles();
 
             List<SelectObject> selectList = new List<SelectObject>();
 
@@ -200,7 +199,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         [HttpGet]
         public ActionResult GetUsersInRole(string roleName)
         {
-            var list = roleService.GetUsersInRole(roleName);
+            var list = _roleService.GetUsersInRole(roleName);
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }

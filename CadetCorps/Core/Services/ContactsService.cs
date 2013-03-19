@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Linq;
 using CadetCorps.Areas.SecurityGuard.ViewModels.Contacts;
-using CadetCorps.Areas.SecurityGuard.ViewModels.Members;
 using CadetCorps.Core.Interfaces;
-using CadetCorps.Core.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
 
@@ -48,14 +44,12 @@ namespace CadetCorps.Core.Services
                 connection.Open();
 
                 var query = cmd.CommandText = @"SELECT * FROM cadtrak.contacts WHERE Id = @id";
-                result = connection.Query<EditCreateViewModel>(query, new { id }).SingleOrDefault();
 
+                result = connection.Query<EditCreateViewModel>(query, new { id }).SingleOrDefault();
 
                 return result;
 
             }
-
-            
         }
     }
 }

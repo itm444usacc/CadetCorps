@@ -19,7 +19,7 @@ namespace CadetCorps.Core.Services
             using (var cmd = connection.CreateCommand())
             {
                 connection.Open();
-                var query = cmd.CommandText = "SELECT Id, FirstName, LastName, Username FROM cadtrak.Members";
+                var query = cmd.CommandText = @"SELECT Id, FirstName, LastName, Username FROM cadtrak.Members";
 
 
                 var result = connection.Query<MembersViewModel>(query, new { }).ToList();
@@ -36,7 +36,7 @@ namespace CadetCorps.Core.Services
             using (var cmd = connection.CreateCommand())
             {
                 connection.Open();
-                var query = cmd.CommandText = "SELECT Id, FirstName, MiddleName, LastName, NickName, Username, Comments, Email, Expired, Created, TrainingPlansId FROM Members WHERE Id = @id";
+                var query = cmd.CommandText = @"SELECT Id, FirstName, MiddleName, LastName, NickName, Username, Comments, Email, Expired, Created, TrainingPlansId FROM Members WHERE Id = @id";
 
                 result = connection.Query<EditMemberViewModel>(query, new { id }).FirstOrDefault();
             }
@@ -72,7 +72,7 @@ namespace CadetCorps.Core.Services
             using (var cmd = connection.CreateCommand())
             {
                 connection.Open();
-                var query = cmd.CommandText = "SELECT Id AS RankId, Nomen, Rank FROM serviceinformationgradestypes";
+                var query = cmd.CommandText = @"SELECT Id AS RankId, Nomen, Rank FROM serviceinformationgradestypes";
 
                 var con = connection.Query(query).ToList();
 
@@ -94,7 +94,7 @@ namespace CadetCorps.Core.Services
                 connection.Open();
 
                 var query = cmd.CommandText = @"INSERT INTO cadtrak.Members( FirstName, MiddleName, LastName, SocialSecurity, NickName, Username, Comments, Email, Expired, Created, Admin, TrainingPlansId) 
-                                    VALUES ( @FirstName, @MiddleName, @LastName, @SocialSecurity, @NickName, @Username, @Comments, @Email, @Expired, @Created, @Admin, @TrainingPlansId)";
+                                                VALUES ( @FirstName, @MiddleName, @LastName, @SocialSecurity, @NickName, @Username, @Comments, @Email, @Expired, @Created, @Admin, @TrainingPlansId)";
                 connection.Execute(query, new
                 {
                     viewModel.FirstName,
@@ -119,7 +119,9 @@ namespace CadetCorps.Core.Services
             using (var cmd = connection.CreateCommand())
             {
                 connection.Open();
-                var query = cmd.CommandText = "UPDATE cadtrak.Members SET FirstName = @FirstName, MiddleName = @MiddleName, LastName = @LastName, NickName = @NickName, Username = @Username, Comments = @Comments, Email = @Email, Expired = @Expired, Created = @Created, TrainingPlansId = TrainingPlansId WHERE Id = @Id";
+                var query = cmd.CommandText = @"UPDATE cadtrak.Members 
+                                                SET FirstName = @FirstName, MiddleName = @MiddleName, LastName = @LastName, NickName = @NickName, 
+                                                    Username = @Username, Comments = @Comments, Email = @Email, Expired = @Expired, Created = @Created, TrainingPlansId = TrainingPlansId WHERE Id = @Id";
                 connection.Execute(query, new
                 {
                     viewModel.FirstName,

@@ -17,13 +17,13 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
 
         #region ctors
 
-        private IMembershipService membershipService;
-        private readonly IRoleService roleService;
+        private readonly IMembershipService _membershipService;
+        private readonly IRoleService _roleService;
 
         public MembershipController()
         {
-            this.roleService = new RoleService(Roles.Provider);
-            this.membershipService = new MembershipService(Membership.Provider);
+            _roleService = new RoleService(Roles.Provider);
+            _membershipService = new MembershipService(Membership.Provider);
         }
 
         #endregion
@@ -31,7 +31,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         #region Index Method
         public virtual ActionResult Index(string filterby, string searchterm)
         {
-            ManageUsersViewModel viewModel = new ManageUsersViewModel();
+            var viewModel = new ManageUsersViewModel();
             viewModel.Users = null;
             viewModel.FilterBy = filterby;
             viewModel.SearchTerm = searchterm;
@@ -48,18 +48,18 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
             {
                 if (filterby == "all")
                 {
-                    viewModel.PaginatedUserList = membershipService.GetAllUsers(page, pageSize, out totalRecords).ToPaginatedList(page, pageSize, totalRecords, searchterm, filterby);
+                    viewModel.PaginatedUserList = _membershipService.GetAllUsers(page, pageSize, out totalRecords).ToPaginatedList(page, pageSize, totalRecords, searchterm, filterby);
                 }
                 else if (!string.IsNullOrEmpty(searchterm))
                 {
                     string query = searchterm + "%";
                     if (filterby == "email")
                     {
-                        viewModel.PaginatedUserList = membershipService.FindUsersByEmail(query, page, pageSize, out totalRecords).ToPaginatedList(page, pageSize, totalRecords, searchterm, filterby);
+                        viewModel.PaginatedUserList = _membershipService.FindUsersByEmail(query, page, pageSize, out totalRecords).ToPaginatedList(page, pageSize, totalRecords, searchterm, filterby);
                     }
                     else if (filterby == "username")
                     {
-                        viewModel.PaginatedUserList = membershipService.FindUsersByName(query, page, pageSize, out totalRecords).ToPaginatedList(page, pageSize, totalRecords, searchterm, filterby);
+                        viewModel.PaginatedUserList = _membershipService.FindUsersByName(query, page, pageSize, out totalRecords).ToPaginatedList(page, pageSize, totalRecords, searchterm, filterby);
                     }
                 }
             }
@@ -74,7 +74,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         {
             var model = new RegisterViewModel()
             {
-                RequireSecretQuestionAndAnswer = membershipService.RequiresQuestionAndAnswer
+                RequireSecretQuestionAndAnswer = _membershipService.RequiresQuestionAndAnswer
             };
             return View(model);
         }
@@ -89,7 +89,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         {
             MembershipUser user;
             MembershipCreateStatus status;
-            user = membershipService.CreateUser(model.UserName, model.Password, model.Email, model.SecretQuestion, model.SecretAnswer, model.Approve, out status);
+            user = _membershipService.CreateUser(model.UserName, model.Password, model.Email, model.SecretQuestion, model.SecretAnswer, model.Approve, out status);
 
             return routeHelpers.Actions.GrantRolesToUser(user.UserName);
         }
@@ -102,7 +102,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         [HttpGet]
         public ActionResult CheckForUniqueUser(string userName)
         {
-            MembershipUser user = membershipService.GetUser(userName);
+            MembershipUser user = _membershipService.GetUser(userName);
             JsonResponse response = new JsonResponse();
             response.Exists = (user == null) ? false : true;
 
@@ -124,7 +124,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
 
             try
             {
-                membershipService.DeleteUser(UserName);
+                _membershipService.DeleteUser(UserName);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -144,12 +144,12 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         [HttpGet]
         public ActionResult Update(string userName)
         {
-            MembershipUser user = membershipService.GetUser(userName);
+            MembershipUser user = _membershipService.GetUser(userName);
 
             UserViewModel viewModel = new UserViewModel();
             viewModel.User = user;
-            viewModel.RequiresSecretQuestionAndAnswer = membershipService.RequiresQuestionAndAnswer;
-            viewModel.Roles = roleService.GetRolesForUser(userName);
+            viewModel.RequiresSecretQuestionAndAnswer = _membershipService.RequiresQuestionAndAnswer;
+            viewModel.Roles = _roleService.GetRolesForUser(userName);
 
             return View(viewModel);
         }
@@ -164,14 +164,14 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
                 throw new ArgumentNullException("userName");
             }
 
-            MembershipUser user = membershipService.GetUser(UserName);
+            MembershipUser user = _membershipService.GetUser(UserName);
 
             try
             {
                 user.Comment = Request["User.Comment"];
                 user.Email = Request["User.Email"];
 
-                membershipService.UpdateUser(user);
+                _membershipService.UpdateUser(user);
                 TempData["SuccessMessage"] = "The user was updated successfully!";
 
             }
@@ -191,7 +191,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         {
             JsonResponse response = new JsonResponse();
 
-            MembershipUser user = membershipService.GetUser(userName);
+            MembershipUser user = _membershipService.GetUser(userName);
 
             try
             {
@@ -215,12 +215,12 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         {
             JsonResponse response = new JsonResponse();
 
-            MembershipUser user = membershipService.GetUser(userName);
+            MembershipUser user = _membershipService.GetUser(userName);
 
             try
             {
                 user.IsApproved = !user.IsApproved;
-                membershipService.UpdateUser(user);
+                _membershipService.UpdateUser(user);
 
                 string approvedMsg = (user.IsApproved) ? "Approved" : "Denied";
 
@@ -273,8 +273,8 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
 
             GrantRolesToUserViewModel model = new GrantRolesToUserViewModel();
             model.UserName = username;
-            model.AvailableRoles = (string.IsNullOrEmpty(username) ? new SelectList(roleService.GetAllRoles()) : new SelectList(roleService.AvailableRolesForUser(username)));
-            model.GrantedRoles = (string.IsNullOrEmpty(username) ? new SelectList(new string[] { }) : new SelectList(roleService.GetRolesForUser(username)));
+            model.AvailableRoles = (string.IsNullOrEmpty(username) ? new SelectList(_roleService.GetAllRoles()) : new SelectList(_roleService.AvailableRolesForUser(username)));
+            model.GrantedRoles = (string.IsNullOrEmpty(username) ? new SelectList(new string[] { }) : new SelectList(_roleService.GetRolesForUser(username)));
 
             return View(model);
         }
@@ -308,7 +308,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
 
             try
             {
-                roleService.AddUserToRoles(userName, roleNames);
+                _roleService.AddUserToRoles(userName, roleNames);
 
                 response.Success = true;
                 response.Message = "The Role(s) has been GRANTED successfully to " + userName;
@@ -358,7 +358,7 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
 
             try
             {
-                roleService.RemoveUserFromRoles(userName, roleNames);
+                _roleService.RemoveUserFromRoles(userName, roleNames);
 
                 response.Success = true;
                 response.Message = "The Role(s) has been REVOKED successfully for " + userName;

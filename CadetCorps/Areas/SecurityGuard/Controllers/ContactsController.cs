@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using CadetCorps.Areas.SecurityGuard.ViewModels.Contacts;
 using CadetCorps.Core.Interfaces;
 
@@ -56,16 +52,9 @@ namespace CadetCorps.Areas.SecurityGuard.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("Index");
+
         }
     }
 }
